@@ -22,11 +22,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
 
-import za.ac.sun.cs.green.Instance;
-import za.ac.sun.cs.green.expr.Expression;
-import za.ac.sun.cs.green.expr.IntConstant;
-import za.ac.sun.cs.green.expr.IntVariable;
-import za.ac.sun.cs.green.expr.Operation;
+import deepsolver.Instance;
+import deepsolver.expr.Expression;
+import deepsolver.expr.IntConstant;
+import deepsolver.expr.IntVariable;
+import deepsolver.expr.Operation;
 import gov.nasa.jpf.symbc.SymbolicInstructionFactory;
 import gov.nasa.jpf.symbc.numeric.BinaryLinearIntegerExpression;
 import gov.nasa.jpf.symbc.numeric.Constraint;

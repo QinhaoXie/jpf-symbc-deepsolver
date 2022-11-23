@@ -37,7 +37,7 @@
 
 package gov.nasa.jpf.symbc.numeric;
 
-import za.ac.sun.cs.green.Instance;
+import deepsolver.Instance;
 
 import java.util.HashMap;
 import java.util.Map;

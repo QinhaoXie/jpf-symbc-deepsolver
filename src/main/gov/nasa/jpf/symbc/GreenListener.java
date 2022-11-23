@@ -20,7 +20,7 @@ package gov.nasa.jpf.symbc;
 
 import gov.nasa.jpf.ListenerAdapter;
 import gov.nasa.jpf.search.Search;
-import za.ac.sun.cs.green.util.Reporter;
+import deepsolver.util.Reporter;
 
 public class GreenListener extends ListenerAdapter {
 

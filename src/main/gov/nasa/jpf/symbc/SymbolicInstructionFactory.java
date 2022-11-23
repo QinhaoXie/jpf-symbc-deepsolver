@@ -18,8 +18,8 @@
 
 package gov.nasa.jpf.symbc;
 
-import za.ac.sun.cs.green.Green;
-import za.ac.sun.cs.green.util.Configuration;
+import deepsolver.Green;
+import deepsolver.util.Configuration;
 import gov.nasa.jpf.Config;
 import gov.nasa.jpf.symbc.bytecode.*;
 import gov.nasa.jpf.symbc.numeric.MinMax;
