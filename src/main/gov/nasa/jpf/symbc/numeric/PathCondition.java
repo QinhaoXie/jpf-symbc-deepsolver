@@ -254,9 +254,9 @@ public class PathCondition implements Comparable<PathCondition> {
      * Returns whether the condition was extended with the constraint.
      */
     public boolean prependUnlessRepeated(Constraint t) {
-        // if Green is used and slicing is on then we always add the constraint
+        // if Deepsolver is used and slicing is on then we always add the constraint
         // since we assume the last constraint added is always the header
-        if ((SymbolicInstructionFactory.greenSolver != null) || !hasConstraint(t)) {
+        if ((SymbolicInstructionFactory.deepSolver != null) || !hasConstraint(t)) {
             t.and = header;
             header = t;
             count++;
@@ -326,20 +326,20 @@ public class PathCondition implements Comparable<PathCondition> {
         if (isReplay) {
             return true;
         }
-        if (SymbolicInstructionFactory.greenSolver == null)
+        if (SymbolicInstructionFactory.deepSolver == null)
             return solveOld();
         else
-            return solveGreen();
+            return solveDeepsolver();
     }
 
     public boolean simplify() {
         if (isReplay) {
             return true;
         }
-        if (SymbolicInstructionFactory.greenSolver == null)
+        if (SymbolicInstructionFactory.deepSolver == null)
             return simplifyOld();
         else
-            return simplifyGreen();
+            return simplifyDeepsolver();
     }
 
     private boolean solveWithSolution() {
@@ -347,7 +347,7 @@ public class PathCondition implements Comparable<PathCondition> {
             instance = SolverTranslator.createInstance(header);
         }
         boolean isSat = (Boolean) instance.request("sat");
-        /* && spc.simplify() */; // strings are not supported by Green for now
+        /* && spc.simplify() */; // strings are not supported by Deepsolver for now
         /*
          * This is untested and have shown a few issues so needs fixing first if (isSat)
          * { for (Variable v : instance.getSlicedVariables()) { Object o =
@@ -361,11 +361,11 @@ public class PathCondition implements Comparable<PathCondition> {
         return isSat;
     }
 
-    public boolean solveGreen() {// warning: solve calls simplify
+    public boolean solveDeepsolver() {// warning: solve calls simplify
         return solveWithSolution();
     }
 
-    public boolean simplifyGreen() {
+    public boolean simplifyDeepsolver() {
         return solveWithSolution();
     }
 

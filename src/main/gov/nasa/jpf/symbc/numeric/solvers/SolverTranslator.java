@@ -57,8 +57,8 @@ public class SolverTranslator {
 			c = c.and;
 		}
 
-		Instance greenPC = new Instance(SymbolicInstructionFactory.greenSolver, null, e);
-		return greenPC;
+		Instance deepsolverPC = new Instance(SymbolicInstructionFactory.deepSolver, null, e);
+		return deepsolverPC;
 	}
 
 //	public static Instance createInstance(Constraint constraint) {
@@ -74,7 +74,7 @@ public class SolverTranslator {
 //		}
 //		Translator translator = new Translator();
 //		c.accept(translator);
-//		Instance i = new Instance(SymbolicInstructionFactory.greenSolver, p, translator.getExpression());
+//		Instance i = new Instance(SymbolicInstructionFactory.deepsolverSolver, p, translator.getExpression());
 //		instanceCache.put(new ConstraintSequence(constraint), i);
 //		return i;
 //	}

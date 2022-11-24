@@ -164,7 +164,7 @@ public class SymbolicConstraintsGeneral {
 
     }
 
-    public boolean isSatisfiableGreen(PathCondition pc) {
+    public boolean isSatisfiableDeepsolver(PathCondition pc) {
         if (pc == null || pc.count == 0) {
             if (SymbolicInstructionFactory.debugMode)
                 System.out.println("## Warning: empty path condition");

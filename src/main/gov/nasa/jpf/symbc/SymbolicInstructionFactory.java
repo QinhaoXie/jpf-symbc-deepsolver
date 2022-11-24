@@ -18,7 +18,7 @@
 
 package gov.nasa.jpf.symbc;
 
-import deepsolver.Green;
+import deepsolver.Deepsolver;
 import deepsolver.util.Configuration;
 import gov.nasa.jpf.Config;
 import gov.nasa.jpf.symbc.bytecode.*;
@@ -561,10 +561,10 @@ public class SymbolicInstructionFactory extends gov.nasa.jpf.jvm.bytecode.Instru
 	static public boolean regressMode;
 	
 	/*
-	 * If Green is enabled this solver will be used
-	 * Later we just check if this is null to know if Green is enabled
+	 * If Deepsolver is enabled this solver will be used
+	 * Later we just check if this is null to know if Deepsolver is enabled
 	 */
-	static public Green greenSolver = null;
+	static public Deepsolver deepSolver = null;
 	
 	/*
 	 * Allow user to set the bitvector length for Z3bitvector and potentially other bv-based solvers.
@@ -605,14 +605,14 @@ public class SymbolicInstructionFactory extends gov.nasa.jpf.jvm.bytecode.Instru
 	ClassInfo ci;
 	ClassInfoFilter filter; // TODO: fix; do we still need this?
 
-	private void setupGreen(Config conf) {
+	private void setupDeepsolver(Config conf) {
 		//------------------------------------
 			// Construct the solver
 			//------------------------------------
-		 greenSolver = new Green();
-		 new Configuration(greenSolver, conf).configure();			
-		 // fix to make sure when Green is used there is no NPE when poking at dp[0] in some bytecodes
-		 dp = new String[] {"green"};
+		 deepSolver = new Deepsolver();
+		 new Configuration(deepSolver, conf).configure();			
+		 // fix to make sure when Deepsolver is used there is no NPE when poking at dp[0] in some bytecodes
+		 dp = new String[] {"deepsolver"};
 	 }
 	
 	
@@ -638,9 +638,9 @@ public class SymbolicInstructionFactory extends gov.nasa.jpf.jvm.bytecode.Instru
 
 		filter = new ClassInfoFilter(null, new String[] {/*"java.*",*/ "javax.*" },null, null);
 
-		if (conf.getBoolean("symbolic.green", false)) {
-			System.out.println("Using Green Framework...");
-			setupGreen(conf);
+		if (conf.getBoolean("symbolic.deepsolver", false)) {
+			System.out.println("Using Deepsolver Framework...");
+			setupDeepsolver(conf);
 		} else {
 			dp = conf.getStringArray("symbolic.dp");
 			if (dp == null) {

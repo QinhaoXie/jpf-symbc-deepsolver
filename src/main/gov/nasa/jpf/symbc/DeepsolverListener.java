@@ -22,14 +22,14 @@ import gov.nasa.jpf.ListenerAdapter;
 import gov.nasa.jpf.search.Search;
 import deepsolver.util.Reporter;
 
-public class GreenListener extends ListenerAdapter {
+public class DeepsolverListener extends ListenerAdapter {
 
-	public GreenListener() { }
+	public DeepsolverListener() { }
 
 	@Override
 	public void searchFinished(Search s) {
-		SymbolicInstructionFactory.greenSolver.shutdown();
-		SymbolicInstructionFactory.greenSolver.report(new Reporter() {
+		SymbolicInstructionFactory.deepSolver.shutdown();
+		SymbolicInstructionFactory.deepSolver.report(new Reporter() {
 			@Override
 			public void report(String context, String message) {
 				System.out.println(context + ":: " + message);
